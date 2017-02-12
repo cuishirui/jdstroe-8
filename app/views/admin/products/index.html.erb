@@ -1,0 +1,25 @@
+<h1>Product List</h1>
+<div class="pull-right" style="margin-bottom: 20px;">
+  <%= link_to("Add New Product", new_admin_product_path, class: "btn btn-default btn-primary")%>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>description</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product|%>
+      <tr>
+        <td><%= link_to(product.title, admin_product_path(product))%></td>
+        <td><%= product.description%></td>
+        <td><%= product.quantity%></td>
+        <td><%= product.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

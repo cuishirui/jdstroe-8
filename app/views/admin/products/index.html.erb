@@ -5,6 +5,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
+      <th>商品</th>
       <th>Title</th>
       <th>description</th>
       <th>Quantity</th>
@@ -14,6 +15,15 @@
   <tbody>
     <% @products.each do |product|%>
       <tr>
+        <td>
+          <%= link_to admin_product_path(product) do %>
+            <% if product.image.present? %>
+              <%= image_tag(product.image.thumb.url, class: "thumbnail")%>
+            <% else %>
+              <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail")%>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= link_to(product.title, admin_product_path(product))%></td>
         <td><%= product.description%></td>
         <td><%= product.quantity%></td>
